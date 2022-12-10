@@ -1,0 +1,108 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-font-size-base: 1.4vh;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+ul.theme-doc-sidebar-menu > li:first-child { 
+  display: none;
+}
+
+.container {
+  max-width: 100% !important;
+  margin: 0 0 !important;
+}
+
+/* ------------------------------------------ */
+
+/* Article itles */
+h1 {
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+/* horizontal line */
+hr {
+  opacity: 0.3;
+}
+
+/* page titles */
+article div h1 {
+  cursor: default;
+  user-select: none;
+}
+
+/* ------------------------------------------ */
+
+/* category dividers */
+.sidebar-title {
+  opacity: 60%;
+  margin: 8px;
+  margin-left: -4px;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  cursor: default;
+  user-select: none;
+}
+
+/* ------------------------------------------ */
+
+/* Navbar links */
+nav>div>div>a {
+  font-size: 22px;
+  margin-left: 18px;
+  opacity: 0.9;
+  letter-spacing: 2px;
+}
+
+/* navbar items */
+.navbar__brand {
+  margin-left: 12px;
+}
+
+/* sidebar items */
+.menu__list-item {
+  user-select: none;
+}
+
+/* ------------------------------------------ */
+
+.p-listbox-item {
+  cursor: default;
+  user-select: none;
+}
+
+.btn-info-text {
+  opacity: 0.4;
+  cursor: default;
+  user-select: none;
+}
