@@ -10,8 +10,9 @@ function useFavoritePagesContextValue() {
 
   useEffect(() => {
     try {
-      const localStorageFavoritePages = createStorageSlot(FAVORITE_PAGES_KEY).get();
+      const localStorageFavoritePages = createStorageSlot(FAVORITE_PAGES_KEY).get() || '[]';
       setFavorites(JSON.parse(localStorageFavoritePages));
+      
     } catch (err) {
       console.error(err);
     }
