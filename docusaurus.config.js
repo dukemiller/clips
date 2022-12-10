@@ -9,7 +9,7 @@ const config = {
   tagline: '',
 
   url: 'https://dukemiller.github.io',
-  baseUrl: '/',
+  baseUrl: '/clips/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
