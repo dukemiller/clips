@@ -172,8 +172,10 @@ export const VideoPlayer = ({ title, videos }) => {
     const [video, setVideo] = useState(null);
     const [tag, setTag] = useState('Untagged');
 
-    const tags = ["Untagged", ...Object.keys(videos).filter(i => i !== "Untagged")
-        .sort((a, b) => a.localeCompare(b))];
+    const tags = ["Untagged", ...Object.keys(videos)
+        .filter(i => i !== "Untagged")
+        .sort((a, b) => a.localeCompare(b))
+    ];
     const taggedVideos = videos[tag]
         .sort((a, b) => a.file.localeCompare(b.file))
         .map(v => {
