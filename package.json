@@ -6,6 +6,8 @@
     "docusaurus": "docusaurus",
     "start": "docusaurus start --no-open",
     "build": "docusaurus build",
+    "generate-files": "node ./.scripts\\build\\index.mjs",
+    "see-remaining": "node ./.scripts\\build\\remaining.mjs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
