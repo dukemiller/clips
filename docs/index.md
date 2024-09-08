@@ -17,3 +17,4 @@ import { Card } from 'primereact/card';
 9/6/2024 -- Changed to use gdrive. (added: Raft, Mario 3, Mario Wonder, Lethal Company, Diablo 4, Palworld, V Rising, HELLDIVERS 2, Elden Ring)  
 9/7/2024 -- Changed to use cloudflare R2.  
 9/7/2024 -- Use the `clipstorage.rokkon.org` domain  
+9/7/2024 -- URI Encode shared urls  

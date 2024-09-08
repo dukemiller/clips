@@ -55,7 +55,7 @@ const Player = ({ videos, toast, video, setVideo }) => {
 
     const handleShareClick = async () => {
         if (video !== null) {
-            await navigator.clipboard.writeText(video.url);
+            await navigator.clipboard.writeText(encodeURI(video.url));
             toast.current.show({ severity: 'success', summary: 'Success', detail: 'Clip URL copied to clipboard.', life: 2000 });
         }
     }
