@@ -14,4 +14,5 @@ import { Card } from 'primereact/card';
 
 12/29/2022 -- Added 51 new files.  
 12/30/2022 -- Added 11 new files. (SAGE 2021, Star Road)  
-9/6/2024 -- Changed to use gdrive. (added: Raft, Mario 3, Mario Wonder, Lethal Company, Diablo 4, Palworld, V Rising, HELLDIVERS 2, Elden Ring)
+9/6/2024 -- Changed to use gdrive. (added: Raft, Mario 3, Mario Wonder, Lethal Company, Diablo 4, Palworld, V Rising, HELLDIVERS 2, Elden Ring)  
+9/7/2024 -- Changed to use cloudflare R2.  
