@@ -6,13 +6,15 @@ import React, { useRef, useState, useMemo } from 'react'
 import ReactPlayer from 'react-player';
 import { ListBox } from 'primereact/listbox';
 import { SelectButton } from 'primereact/selectbutton';
+import { Button } from 'primereact/button';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Toast } from 'primereact/toast';
 import { useFavoritePages } from '../FavoritesContextProvider';
 
 let globalVolume = 0.6
+let globalSortBy = "file"
 
-const Player = ({ videos, toast, video, setVideo }) => {
+const Player = ({ videos, toast, video, setVideo, sortBy, setSortBy }) => {
 
     const [loading, setLoading] = useState(false);
     const [seeking, setSeeking] = useState(false);
@@ -59,6 +61,14 @@ const Player = ({ videos, toast, video, setVideo }) => {
             toast.current.show({ severity: 'success', summary: 'Success', detail: 'Clip URL copied to clipboard.', life: 2000 });
         }
     }
+
+    const handleSortClick = () => {
+        setSortBy((prev) => {
+            let value = prev === 'file' ? 'date' : 'file';
+            globalSortBy = value;
+            return value;
+        })
+    };
 
     // 46 -> 32
     // 1440 -> 1080
@@ -114,12 +124,23 @@ const Player = ({ videos, toast, video, setVideo }) => {
                 {/* playlist */}
                 <div className='col col--2'>
                     <ListBox
+                        key={sortBy}
                         value={video}
                         listStyle={{ height: '46rem' }}
                         options={videos}
+                        focusOnHover={false}
                         itemTemplate={videoTemplate}
                         onChange={handleChangeSelectedVideo}
-                        optionLabel="file" />
+                        optionLabel="file"/>
+                    <Button
+                        size="small"
+                        icon='pi pi-sort-alt'
+                        iconPos="right"
+                        style={{float: 'right'}}
+                        onClick={handleSortClick}
+                        label={sortBy === 'file' ? 'Filename' : 'Date created'}
+                        text
+                    />
                 </div>
             </div>
 
@@ -171,13 +192,21 @@ export const VideoPlayer = ({ title, videos }) => {
     const { favoritePages, setFavoritePages } = useFavoritePages();
     const [video, setVideo] = useState(null);
     const [tag, setTag] = useState('Untagged');
+    const [sortBy, setSortBy] = useState(globalSortBy);
 
     const tags = ["Untagged", ...Object.keys(videos)
         .filter(i => i !== "Untagged")
         .sort((a, b) => a.localeCompare(b))
     ];
     const taggedVideos = videos[tag]
-        .sort((a, b) => a.file.localeCompare(b.file))
+        .sort((a, b) => {
+            if (sortBy === 'file') {
+                return a.file.localeCompare(b.file);
+            } else if (sortBy === 'date') {
+                return new Date(b.date) - new Date(a.date);
+            }
+            return 0;
+        })
         .map(v => {
             v.file = v.file.replace(`[${tag}] `, '');
             v.favorite = favoritePages.includes(`${title}.${tag}.${v.file}`)
@@ -212,7 +241,7 @@ export const VideoPlayer = ({ title, videos }) => {
                 </div>
             </div>
 
-            <Player videos={taggedVideos} video={video} setVideo={setVideo} toast={toast} isFavorite={isFavorite} />
+            <Player videos={taggedVideos} video={video} setVideo={setVideo} toast={toast} isFavorite={isFavorite} sortBy={sortBy} setSortBy={setSortBy} />
 
             <div className='row'>
 
@@ -226,6 +255,7 @@ export const VideoPlayer = ({ title, videos }) => {
                     />
                 </div>
 
+                {/* favorite button */}
                 <div className='col col--2 col--offset-1'>
                     <div style={{ display: 'flex' }}>
                         <div style={{ marginLeft: 'auto' }}>

@@ -31,7 +31,7 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-ul.theme-doc-sidebar-menu > li:first-child { 
+ul.theme-doc-sidebar-menu > li:first-child {
   display: none;
 }
 
@@ -105,4 +105,13 @@ nav>div>div>a {
   opacity: 0.4;
   cursor: default;
   user-select: none;
+}
+
+ul, ol {
+  margin: 0 !important;
+  padding-left: 0 !important;
+}
+
+.p-button.p-button-text:not(:disabled):focus, .p-button.p-button-outlined:not(:disabled):focus {
+  background: inherit;
 }
