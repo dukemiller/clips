@@ -1,15 +1,15 @@
 import 'primeicons/primeicons.css';
-import "primereact/resources/themes/md-dark-indigo/theme.css"; 
-import "primereact/resources/primereact.min.css"; 
+import "primereact/resources/themes/md-dark-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
 
-import React, { useRef, useState, useMemo } from 'react'
+import React, {useRef, useState, useMemo} from 'react'
 import ReactPlayer from 'react-player';
-import { ListBox } from 'primereact/listbox';
-import { SelectButton } from 'primereact/selectbutton';
-import { Button } from 'primereact/button';
-import { ProgressSpinner } from 'primereact/progressspinner';
-import { Toast } from 'primereact/toast';
-import { useFavoritePages } from '../FavoritesContextProvider';
+import {ListBox} from 'primereact/listbox';
+import {SelectButton} from 'primereact/selectbutton';
+import {Button} from 'primereact/button';
+import {ProgressSpinner} from 'primereact/progressspinner';
+import {Toast} from 'primereact/toast';
+import {useFavoritePages} from '../FavoritesContextProvider';
 
 let globalVolume = 0.6
 let globalSortBy = "file"
@@ -58,7 +58,12 @@ const Player = ({ videos, toast, video, setVideo, sortBy, setSortBy }) => {
     const handleShareClick = async () => {
         if (video !== null) {
             await navigator.clipboard.writeText(encodeURI(video.url));
-            toast.current.show({ severity: 'success', summary: 'Success', detail: 'Clip URL copied to clipboard.', life: 2000 });
+            toast.current.show({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'Clip URL copied to clipboard.',
+                life: 2000
+            });
         }
     }
 
@@ -76,7 +81,8 @@ const Player = ({ videos, toast, video, setVideo, sortBy, setSortBy }) => {
     const videoTemplate = (video) => {
         return (
             <div>
-                <div>{video.favorite && <i className='pi pi-star-fill' style={{color: 'gold', fontSize: '1em'}}>&nbsp;</i>}{video.file}</div>
+                <div>{video.favorite && <i className='pi pi-star-fill'
+                                           style={{ color: 'gold', fontSize: '1em' }}>&nbsp;</i>}{video.file}</div>
             </div>
         );
     }
@@ -88,8 +94,19 @@ const Player = ({ videos, toast, video, setVideo, sortBy, setSortBy }) => {
                 <div className='col col--8 col--offset-1'>
                     <div style={{ background: 'black', height: '46rem', }}>
                         {!video &&
-                            <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                <p style={{ fontSize: '1.5em', marginRight: '-40px', cursor: 'default', userSelect: 'none' }}>
+                            <div style={{
+                                width: '100%',
+                                height: '100%',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}>
+                                <p style={{
+                                    fontSize: '1.5em',
+                                    marginRight: '-40px',
+                                    cursor: 'default',
+                                    userSelect: 'none'
+                                }}>
                                     Select a video.
                                 </p>
                             </div>}
@@ -101,7 +118,7 @@ const Player = ({ videos, toast, video, setVideo, sortBy, setSortBy }) => {
                                     top: '46.5%',
                                     WebkitTransform: 'translate(-50%, -50%)',
                                     transform: 'translate(-50%, -50%)'
-                                }} />}
+                                }}/>}
                         {video &&
                             <ReactPlayer
                                 ref={player}
@@ -136,7 +153,7 @@ const Player = ({ videos, toast, video, setVideo, sortBy, setSortBy }) => {
                         size="small"
                         icon='pi pi-sort-alt'
                         iconPos="right"
-                        style={{float: 'right'}}
+                        style={{ float: 'right' }}
                         onClick={handleSortClick}
                         label={sortBy === 'file' ? 'Filename' : 'Date created'}
                         text
@@ -166,7 +183,8 @@ const Player = ({ videos, toast, video, setVideo, sortBy, setSortBy }) => {
 
                 {/* volume bar */}
                 <div className='col col--1 col--offset-8' style={{ marginTop: '-10px' }}>
-                    <input type='range' min={0} max={1} step='any' style={{ width: '100%' }} value={volume} onChange={handleVolumeChange} />
+                    <input type='range' min={0} max={1} step='any' style={{ width: '100%' }} value={volume}
+                           onChange={handleVolumeChange}/>
                 </div>
 
                 {/* share button */}
@@ -175,7 +193,7 @@ const Player = ({ videos, toast, video, setVideo, sortBy, setSortBy }) => {
                         <div style={{ marginLeft: 'auto' }}>
                             <span className='btn-info-text' style={{ marginRight: '5px' }}>Share</span>
                             <button onClick={handleShareClick} disabled={video == null}>
-                                <i className='pi pi-share-alt' style={{ fontSize: '1.5em' }} />
+                                <i className='pi pi-share-alt' style={{ fontSize: '1.5em' }}/>
                             </button>
                         </div>
                     </div>
@@ -218,8 +236,7 @@ export const VideoPlayer = ({ title, videos }) => {
         if (favoritePages.includes(key)) {
             setFavoritePages(favoritePages.filter(f => f !== key))
             // toast.current.show({ severity: 'success', summary: 'Success', detail: 'Removed clip from favorites.', life: 1000 });
-        }
-        else {
+        } else {
             setFavoritePages([...favoritePages, key])
             // toast.current.show({ severity: 'success', summary: 'Success', detail: 'Added clip to favorites.', life: 1000 });
         }
@@ -229,19 +246,24 @@ export const VideoPlayer = ({ title, videos }) => {
     const favoriteIcon = isFavorite ? "pi pi-star-fill" : "pi pi-star"
     return (
         <div>
-            <Toast ref={toast} position="bottom-right" />
+            <Toast ref={toast} position="bottom-right"/>
 
-            <div className='row row--no-gutters' >
-
-                {/* title */}
-                <div className='col col--8 col--offset-1' >
+            {/* title */}
+            <div className='row row--no-gutters'>
+                <div className='col col--8 col--offset-1'>
                     <center>
                         <h1>{title}</h1>
                     </center>
                 </div>
             </div>
 
-            <Player videos={taggedVideos} video={video} setVideo={setVideo} toast={toast} isFavorite={isFavorite} sortBy={sortBy} setSortBy={setSortBy} />
+            <Player
+                videos={taggedVideos}
+                video={video} setVideo={setVideo}
+                toast={toast}
+                isFavorite={isFavorite}
+                sortBy={sortBy} setSortBy={setSortBy}
+            />
 
             <div className='row'>
 
@@ -261,7 +283,7 @@ export const VideoPlayer = ({ title, videos }) => {
                         <div style={{ marginLeft: 'auto' }}>
                             <span className='btn-info-text' style={{ marginRight: '5px' }}>Favorite</span>
                             <button onClick={handleToggleFavorite} disabled={video == null}>
-                                <i className={favoriteIcon} style={{ 'fontSize': '1.5em' }} ></i>
+                                <i className={favoriteIcon} style={{ 'fontSize': '1.5em' }}></i>
                             </button>
                         </div>
                     </div>
