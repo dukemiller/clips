@@ -9,6 +9,7 @@ import {SelectButton} from 'primereact/selectbutton';
 import {Button} from 'primereact/button';
 import {ProgressSpinner} from 'primereact/progressspinner';
 import {Toast} from 'primereact/toast';
+import {Badge} from 'primereact/badge';
 import {useFavoritePages} from '../FavoritesContextProvider';
 
 let globalVolume = 0.6
@@ -92,77 +93,66 @@ const Player = ({ videos, toast, video, setVideo, sortBy, setSortBy }) => {
             <div className='row'>
                 {/* video */}
                 <div className='col col--8 col--offset-1'>
-                    <div style={{ background: 'black', height: '46rem', }}>
-                        {!video &&
-                            <div style={{
-                                width: '100%',
-                                height: '100%',
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center'
+                    <div style={{ height: '46rem', background: 'black' }}>
+                    {!video &&
+                        <div style={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}>
+                            <p style={{
+                                fontSize: '1.5em',
+                                marginRight: '-40px',
+                                cursor: 'default',
+                                userSelect: 'none'
                             }}>
-                                <p style={{
-                                    fontSize: '1.5em',
-                                    marginRight: '-40px',
-                                    cursor: 'default',
-                                    userSelect: 'none'
-                                }}>
-                                    Select a video.
-                                </p>
-                            </div>}
-                        {video && loading &&
-                            <ProgressSpinner
-                                style={{
-                                    position: 'absolute',
-                                    left: '49%',
-                                    top: '46.5%',
-                                    WebkitTransform: 'translate(-50%, -50%)',
-                                    transform: 'translate(-50%, -50%)'
-                                }}/>}
-                        {video &&
-                            <ReactPlayer
-                                ref={player}
-                                url={video && video.url}
-                                volume={volume}
-                                loop={true}
-                                width='100%'
-                                height='100%'
-                                playing={true}
-                                progressInterval={1}
-                                onBuffer={handleOnBuffer}
-                                onBufferEnd={handleOnBufferEnd}
-                                onProgress={handleProgress}
-                            />}
-
-                        {/* {playerScreen} */}
+                                Select a video.
+                            </p>
+                        </div>}
+                    {video && loading &&
+                        <ProgressSpinner
+                            style={{
+                                position: 'absolute',
+                                left: '49%',
+                                top: '46.5%',
+                                WebkitTransform: 'translate(-50%, -50%)',
+                                transform: 'translate(-50%, -50%)'
+                            }}/>}
+                    {video &&
+                        <ReactPlayer
+                            ref={player}
+                            url={video && video.url}
+                            volume={volume}
+                            loop={true}
+                            width='100%'
+                            height='100%'
+                            playing={true}
+                            progressInterval={1}
+                            onBuffer={handleOnBuffer}
+                            onBufferEnd={handleOnBufferEnd}
+                            onProgress={handleProgress}
+                        />}
                     </div>
                 </div>
 
                 {/* playlist */}
                 <div className='col col--2'>
                     <ListBox
-                        key={sortBy}
                         value={video}
-                        listStyle={{ height: '46rem' }}
                         options={videos}
-                        focusOnHover={false}
                         itemTemplate={videoTemplate}
+                        optionLabel={"file"}
                         onChange={handleChangeSelectedVideo}
-                        optionLabel="file"/>
-                    <Button
-                        size="small"
-                        icon='pi pi-sort-alt'
-                        iconPos="right"
-                        style={{ float: 'right' }}
-                        onClick={handleSortClick}
-                        label={sortBy === 'file' ? 'Filename' : 'Date created'}
-                        text
+                        focusOnHover={true}
+                        listStyle={{ height: '46rem' }}
                     />
+
                 </div>
             </div>
 
-            <div className='row'>
-
+            <div className='row' >
                 {/* progress bar */}
                 <div className='col col--8 col--offset-1'>
                     <input
@@ -177,18 +167,32 @@ const Player = ({ videos, toast, video, setVideo, sortBy, setSortBy }) => {
                         onProgress={handleProgress}
                     />
                 </div>
+
+                {/* sort-by button */}
+                <div className='col col--2'>
+                    <Button
+                        size="small"
+                        icon='pi pi-sort-alt'
+                        iconPos="right"
+                        style={{ float: 'right' }}
+                        onClick={handleSortClick}
+                        label={sortBy === 'file' ? 'Filename' : 'Date created'}
+                        text
+                    />
+                </div>
+
             </div>
 
             <div className='row'>
 
                 {/* volume bar */}
-                <div className='col col--1 col--offset-8' style={{ marginTop: '-10px' }}>
+                <div className='col col--1 col--offset-8' style={{ marginTop: '-20px' }}>
                     <input type='range' min={0} max={1} step='any' style={{ width: '100%' }} value={volume}
                            onChange={handleVolumeChange}/>
                 </div>
 
                 {/* share button */}
-                <div className='col col--2'>
+                <div className='col col--2' style={{ marginTop: '20px' }}>
                     <div style={{ display: 'flex' }}>
                         <div style={{ marginLeft: 'auto' }}>
                             <span className='btn-info-text' style={{ marginRight: '5px' }}>Share</span>
@@ -212,10 +216,17 @@ export const VideoPlayer = ({ title, videos }) => {
     const [tag, setTag] = useState('Untagged');
     const [sortBy, setSortBy] = useState(globalSortBy);
 
-    const tags = ["Untagged", ...Object.keys(videos)
-        .filter(i => i !== "Untagged")
-        .sort((a, b) => a.localeCompare(b))
-    ];
+    const tags = Object.entries(videos)
+        .map(([key, value]) => ({
+            name: key,
+            count: value.length
+        }))
+        .sort((a, b) => {
+            if (a.name === "Untagged") return -1;
+            if (b.name === "Untagged") return 1;
+            return a.name.localeCompare(b.name);
+        });
+
     const taggedVideos = videos[tag]
         .sort((a, b) => {
             if (sortBy === 'file') {
@@ -240,6 +251,12 @@ export const VideoPlayer = ({ title, videos }) => {
             setFavoritePages([...favoritePages, key])
             // toast.current.show({ severity: 'success', summary: 'Success', detail: 'Added clip to favorites.', life: 1000 });
         }
+    }
+
+    const tagsTemplate = ({ name, count }) => {
+        return (
+            <div>{name} <Badge value={count} severity={'contrast'}/></div>
+        );
     }
 
     const isFavorite = useMemo(() => video != null && favoritePages.includes(`${title}.${tag}.${video.file}`), [favoritePages, video])
@@ -268,14 +285,17 @@ export const VideoPlayer = ({ title, videos }) => {
             <div className='row'>
 
                 {/* tags */}
-                <div className='col col--7 col--offset-1'>
-                    <SelectButton
-                        value={tag}
-                        options={tags}
-                        style={{ marginTop: '-10px' }}
-                        onChange={({ value }) => setTag(value || "Untagged")}
-                    />
-                </div>
+                <SelectButton
+                    allowEmpty={false}
+                    className={'col col--7 col--offset-1'}
+                    style={{ marginTop: '-40px' }}
+                    value={tag}
+                    options={tags}
+                    itemTemplate={tagsTemplate}
+                    optionValue={'name'}
+                    optionLabel={'name'}
+                    onChange={({ value }) => setTag(value || "Untagged")}
+                />
 
                 {/* favorite button */}
                 <div className='col col--2 col--offset-1'>
