@@ -254,8 +254,10 @@ export const VideoPlayer = ({ title, videos }) => {
     }
 
     const tagsTemplate = ({ name, count }) => {
+        let coloring = name === "Untagged" ? "rgba(211,211,211,0.7)" : "white";
+        let text = name === "Untagged" ? "(untagged)" : name
         return (
-            <div>{name} <Badge value={count} severity={'contrast'}/></div>
+            <div><span style={{ color: coloring }}>{text}</span> <Badge value={count} severity={'contrast'}/></div>
         );
     }
 
