@@ -148,11 +148,14 @@ export const VideoPlayer = ({ title, videos }) => {
                         values={taggedVideos}
                         onChange={handleChangeSelectedVideo}
                     />
+                    <SortByButton
+                        onClick={handleSortClick}
+                        value={sortBy}/>
                 </div>
             </div>
 
             <div className='row'>
-                <div className='col col--8 col--offset-1'>
+                <div className='progressbar col col--8 col--offset-1'>
                     <ProgressBar
                         onChange={handleSeekChange}
                         onProgress={handleProgress}
@@ -161,41 +164,32 @@ export const VideoPlayer = ({ title, videos }) => {
                         value={played}
                     />
                 </div>
-
-                <div className='col col--2'>
-                    <SortByButton
-                        onClick={handleSortClick}
-                        value={sortBy}/>
-                </div>
             </div>
 
             <div className='row'>
-                <div className='col col--1 col--offset-8' style={{ marginTop: '-20px' }}>
+                <div className='volumebar col col--1 col--offset-8'>
                     <VolumeBar
                         value={volume}
                         onChange={handleVolumeChange}/>
                 </div>
-
-                <div className='col col--2' style={{ marginTop: '20px' }}>
+                <div className='col col--2' >
                     <ShareButton
                         disabled={disabled}
                         onClick={handleShareClick}/>
-                </div>
-            </div>
-
-            <div className='row'>
-                <div className="col col--7 col--offset-1">
-                    <TagSelector
-                        setValue={setTag}
-                        value={tag}
-                        values={tags}
-                    />
-                </div>
-                <div className='col col--2 col--offset-1'>
                     <FavoriteButton
                         value={videoIsFavorited}
                         onClick={handleToggleFavorite}
                         disabled={disabled}
+                    />
+                </div>
+            </div>
+
+            <div className='row'>
+                <div className="tagselector col col--7 col--offset-1">
+                    <TagSelector
+                        setValue={setTag}
+                        value={tag}
+                        values={tags}
                     />
                 </div>
             </div>

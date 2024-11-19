@@ -116,3 +116,53 @@ ul, ol {
 .p-button.p-button-text:not(:disabled):focus, .p-button.p-button-outlined:not(:disabled):focus {
   background: inherit;
 }
+
+/* ------------------------------------------ */
+
+.player {
+  height: 47rem
+}
+
+.playlist {
+  height: 46rem
+}
+
+.progressbar {
+  margin-top: -20px
+}
+
+.volumebar {
+  margin-top: -10px
+}
+
+.tagselector {
+  margin-top: -40px;
+}
+
+@media screen and (max-width: 996px) {
+  :root {
+    --ifm-navbar-sidebar-width: 46vw;
+  }
+  .player {
+    height: 25rem;
+    margin-bottom: 10px;
+  }
+  .playlist {
+    height: 20rem;
+  }
+  .progressbar {
+    margin-top: 0
+  }
+  .volumebar {
+    margin-top: 0
+  }
+  .tagselector {
+    max-width: 66vw;
+  }
+  nav.pagination-nav {
+    display: none;
+  }
+}
+
+
+

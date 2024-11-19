@@ -6,7 +6,6 @@ const TagSelector = ({ value, setValue, values }) => {
     return (
         <SelectButton
             allowEmpty={false}
-            style={{ marginTop: '-40px' }}
             value={value}
             options={values}
             itemTemplate={TagSelectButton}

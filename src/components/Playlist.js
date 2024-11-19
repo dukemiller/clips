@@ -11,7 +11,7 @@ const Playlist = ({ value, values, onChange }) => {
             optionLabel={"file"}
             onChange={onChange}
             focusOnHover={true}
-            listStyle={{ height: '46rem' }}
+            listClassName={'playlist'}
         />
     );
 }

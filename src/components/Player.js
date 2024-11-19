@@ -6,7 +6,7 @@ import ReactPlayer from "react-player";
 
 const Player = ({ video, loading, player, volume, onBuffer, onBufferEnd, onProgress }) => {
     return (
-        <div style={{ height: '46rem', background: 'black' }}>
+        <div className={'player'} style={{ background: 'black' }}>
             {!video &&
                 <div style={{
                     width: '100%',
