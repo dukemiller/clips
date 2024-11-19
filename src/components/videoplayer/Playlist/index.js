@@ -1,8 +1,9 @@
 import React from "react";
-import PlaylistItem from "./PlaylistItem";
+import {PlaylistItem} from "..";
 import {ListBox} from "primereact/listbox";
+import styles from './styles.module.css'
 
-const Playlist = ({ value, values, onChange }) => {
+export const Playlist = ({ value, values, onChange }) => {
     return (
         <ListBox
             value={value}
@@ -11,9 +12,8 @@ const Playlist = ({ value, values, onChange }) => {
             optionLabel={"file"}
             onChange={onChange}
             focusOnHover={true}
-            listClassName={'playlist'}
+            className={styles.main}
+            listClassName={styles.playlist}
         />
     );
 }
-
-export default Playlist;

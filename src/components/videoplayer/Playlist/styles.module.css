@@ -1,0 +1,17 @@
+.main ul {
+    padding: 0;
+}
+
+.main ul li {
+    user-select: none;
+}
+
+.playlist {
+    height: 46rem;
+}
+
+@media screen and (max-width: 996px) {
+    .playlist {
+        height: 20rem;
+    }
+}

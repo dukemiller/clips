@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+}
+
+.outer {
+    margin-left: auto;
+}
+
+.text {
+    opacity: 0.4;
+    cursor: default;
+    user-select: none;
+    margin-right: 5px;
+}

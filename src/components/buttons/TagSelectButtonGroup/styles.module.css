@@ -1,0 +1,9 @@
+.container {
+    margin-top: -40px;
+}
+
+@media screen and (max-width: 996px) {
+    .container {
+        max-width: 66vw;
+    }
+}

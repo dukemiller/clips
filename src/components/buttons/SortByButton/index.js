@@ -1,18 +1,17 @@
 import React from "react";
 import {Button} from "primereact/button";
+import styles from './styles.module.css'
 
-const SortByButton = ({ onClick, value }) => {
+export const SortByButton = ({ onClick, value }) => {
     return (
         <Button
             size="small"
             icon='pi pi-sort-alt'
             iconPos="right"
-            style={{ float: 'right' }}
+            className={styles.button}
             onClick={onClick}
             label={value === 'file' ? 'Filename' : 'Date created'}
             text
         />
     );
 }
-
-export default SortByButton;

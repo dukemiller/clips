@@ -4,16 +4,11 @@ import "primereact/resources/primereact.min.css";
 
 import React, {useEffect, useMemo, useRef, useState} from 'react'
 import {Toast} from 'primereact/toast';
-import {useFavoritePages} from './FavoritesContextProvider';
-import FavoriteButton from "./FavoriteButton";
-import SortByButton from "./SortByButton";
-import VolumeBar from "./VolumeBar";
-import ShareButton from "./ShareButton";
-import ProgressBar from "./ProgressBar";
-import Playlist from "./Playlist";
-import Player from "./Player";
-import Title from "./Title";
-import TagSelector from "./TagSelector";
+import {useFavoritePages} from '../../context/FavoritesContextProvider';
+
+import {FavoriteButton, ShareButton, SortByButton, TagSelectButtonGroup} from '../../buttons';
+import {ProgressBar, VolumeBar} from '../../bars'
+import {Playlist, Player, Title} from '..'
 
 let globalSortBy = "file"
 let globalVolume = 0.6
@@ -56,39 +51,39 @@ export const VideoPlayer = ({ title, videos }) => {
             return v;
         })
 
-    const handleSeekMouseDown = () => setSeeking(true);
+    const onMouseDown = () => setSeeking(true);
 
     const handleSeekChange = (e) => setPlayed(parseFloat(e.target.value));
 
-    const handleSeekMouseUp = (e) => {
+    const onMouseUp = (e) => {
         setSeeking(false)
         player.current.seekTo(e.target.value);
     };
 
-    const handleProgress = ({ played }) => {
+    const onProgress = ({ played }) => {
         if (!seeking)
             setPlayed(played);
     };
 
-    const handleOnBuffer = () => setLoading(true);
+    const onBuffer = () => setLoading(true);
 
-    const handleOnBufferEnd = () => {
+    const onBufferEnd = () => {
         if (loading)
             setLoading(false);
     };
 
-    const handleVolumeChange = ({ target: { value } }) => {
+    const onVolumeChange = ({ target: { value } }) => {
         setVolume(parseFloat(value))
         globalVolume = parseFloat(value);
     }
 
-    const handleChangeSelectedVideo = ({ value }) => {
+    const onVideoChange = ({ value }) => {
         setPlayed(0.0);
         setVideo(value);
         setLoading(true);
     }
 
-    const handleShareClick = async () => {
+    const onShareClick = async () => {
         if (video !== null) {
             await navigator.clipboard.writeText(encodeURI(video.url));
             toast.current.show({
@@ -100,7 +95,7 @@ export const VideoPlayer = ({ title, videos }) => {
         }
     }
 
-    const handleSortClick = () => {
+    const onSortClick = () => {
         setSortBy((prev) => {
             let value = prev === 'file' ? 'date' : 'file';
             globalSortBy = value;
@@ -108,7 +103,7 @@ export const VideoPlayer = ({ title, videos }) => {
         })
     };
 
-    const handleToggleFavorite = () => {
+    const onFavoriteClick = () => {
         const key = `${title}.${tag}.${video.file}`;
         if (favoritePages.includes(key)) {
             setFavoritePages(favoritePages.filter(f => f !== key))
@@ -126,75 +121,45 @@ export const VideoPlayer = ({ title, videos }) => {
             <Toast ref={toast} position="bottom-right"/>
 
             <div className='row row--no-gutters'>
-                <Title text={title}/>
+                <div className='col col--8 col--offset-1'>
+                    <Title text={title}/>
+                </div>
             </div>
 
             <div className='row'>
                 <div className='col col--8 col--offset-1'>
-                    <Player
-                        video={video}
-                        volume={volume}
-                        player={player}
-                        onBuffer={handleOnBuffer}
-                        onBufferEnd={handleOnBufferEnd}
-                        onProgress={handleProgress}
-                        loading={loading}
-                    />
+                    <Player video={video} volume={volume} player={player} loading={loading}
+                            onBuffer={onBuffer} onBufferEnd={onBufferEnd} onProgress={onProgress}/>
                 </div>
-
                 <div className='col col--2'>
-                    <Playlist
-                        value={video}
-                        values={taggedVideos}
-                        onChange={handleChangeSelectedVideo}
-                    />
-                    <SortByButton
-                        onClick={handleSortClick}
-                        value={sortBy}/>
+                    <Playlist value={video} values={taggedVideos} onChange={onVideoChange}/>
+                    <SortByButton value={sortBy} onClick={onSortClick}/>
                 </div>
             </div>
 
             <div className='row'>
-                <div className='progressbar col col--8 col--offset-1'>
-                    <ProgressBar
-                        onChange={handleSeekChange}
-                        onProgress={handleProgress}
-                        onMouseDown={handleSeekMouseDown}
-                        onMouseUp={handleSeekMouseUp}
-                        value={played}
-                    />
+                <div className='col col--8 col--offset-1'>
+                    <ProgressBar value={played}
+                                 onChange={handleSeekChange} onProgress={onProgress}
+                                 onMouseDown={onMouseDown} onMouseUp={onMouseUp}/>
                 </div>
             </div>
 
             <div className='row'>
-                <div className='volumebar col col--1 col--offset-8'>
-                    <VolumeBar
-                        value={volume}
-                        onChange={handleVolumeChange}/>
+                <div className='col col--1 col--offset-8'>
+                    <VolumeBar value={volume} onChange={onVolumeChange}/>
                 </div>
-                <div className='col col--2' >
-                    <ShareButton
-                        disabled={disabled}
-                        onClick={handleShareClick}/>
-                    <FavoriteButton
-                        value={videoIsFavorited}
-                        onClick={handleToggleFavorite}
-                        disabled={disabled}
-                    />
+                <div className='col col--2'>
+                    <ShareButton disabled={disabled} onClick={onShareClick}/>
+                    <FavoriteButton value={videoIsFavorited} disabled={disabled} onClick={onFavoriteClick}/>
                 </div>
             </div>
 
             <div className='row'>
-                <div className="tagselector col col--7 col--offset-1">
-                    <TagSelector
-                        setValue={setTag}
-                        value={tag}
-                        values={tags}
-                    />
+                <div className="col col--7 col--offset-1">
+                    <TagSelectButtonGroup setValue={setTag} value={tag} values={tags}/>
                 </div>
             </div>
         </div>
     )
 }
-
-export default VideoPlayer;
