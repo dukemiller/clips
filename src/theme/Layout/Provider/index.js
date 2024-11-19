@@ -1,25 +1,23 @@
 import React from 'react';
-import { FavoritePagesProvider } from '../../../components/context/FavoritesContextProvider'
-import { composeProviders } from '@docusaurus/theme-common';
+import {FavoritePagesProvider} from '../../../components/context/FavoritesContextProvider'
+import {composeProviders} from '@docusaurus/theme-common';
 import {
   ColorModeProvider,
-  TabGroupChoiceProvider,
   AnnouncementBarProvider,
-  DocsPreferredVersionContextProvider,
   ScrollControllerProvider,
   NavbarProvider,
   PluginHtmlClassNameProvider,
 } from '@docusaurus/theme-common/internal';
+import {DocsPreferredVersionContextProvider} from '@docusaurus/plugin-content-docs/client';
 const Provider = composeProviders([
   ColorModeProvider,
   AnnouncementBarProvider,
-  TabGroupChoiceProvider,
   ScrollControllerProvider,
   DocsPreferredVersionContextProvider,
   PluginHtmlClassNameProvider,
   NavbarProvider,
-  FavoritePagesProvider,
+  FavoritePagesProvider
 ]);
-export default function LayoutProvider({ children }) {
+export default function LayoutProvider({children}) {
   return <Provider>{children}</Provider>;
 }
