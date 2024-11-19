@@ -2,7 +2,7 @@ import 'primeicons/primeicons.css';
 import "primereact/resources/themes/md-dark-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 
-import React, {useMemo, useRef, useState} from 'react'
+import React, {useEffect, useMemo, useRef, useState} from 'react'
 import {Toast} from 'primereact/toast';
 import {useFavoritePages} from './FavoritesContextProvider';
 import FavoriteButton from "./FavoriteButton";
