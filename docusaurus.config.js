@@ -49,10 +49,19 @@ const config = {
       navbar: {
         title: 'Clips',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Site Logo',
           src: 'img/logo.svg',
+          width: 32,
+          height: 32
         },
-        items: [],
+        items: [
+          {
+            href: 'https://github.com/dukemiller/clips',
+            position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository'
+          }
+        ],
       },
       
       colorMode: {
