@@ -44,6 +44,21 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      "@dipakparmar/docusaurus-plugin-umami",
+      /** @type {import('@dipakparmar/docusaurus-plugin-umami').Options} */
+      ({
+        websiteID: "c4ac3d2f-b401-4cf1-9bba-6f57d8a36727",
+        analyticsDomain: "analytics.rokkon.org",
+        dataAutoTrack: true,
+        dataDoNotTrack: true,
+        dataCache: true,
+        dataDomains: "dukemiller.github.io"
+      }),
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
