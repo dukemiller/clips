@@ -24,8 +24,11 @@ export const VideoPlayer = ({ title, videos }) => {
   const [seeking, setSeeking] = useState(false);
   const [played, setPlayed] = useState(0.0);
   const [volume, setVolume] = useState(globalVolume);
+  const [paused, setPaused] = useState(false);
   const player = useRef(null);
   const isProdBrowser = useIsBrowser() && process.env.NODE_ENV === "production";
+  const disabled = video == null
+  const videoIsFavorited = useMemo(() => !disabled && favoritePages.includes(`${title}.${tag}.${video.file}`), [favoritePages, video])
 
   const tags = Object.entries(videos)
     .map(([key, value]) => ({
@@ -53,11 +56,11 @@ export const VideoPlayer = ({ title, videos }) => {
       return v;
     })
 
-  const onMouseDown = () => setSeeking(true);
+  const onProgressBarMouseDown = () => setSeeking(true);
 
-  const handleSeekChange = (e) => setPlayed(parseFloat(e.target.value));
+  const onProgressBarChange = (e) => setPlayed(parseFloat(e.target.value));
 
-  const onMouseUp = (e) => {
+  const onProgressBarMouseUp = (e) => {
     setSeeking(false)
     player.current.seekTo(e.target.value);
   };
@@ -67,9 +70,9 @@ export const VideoPlayer = ({ title, videos }) => {
       setPlayed(played);
   };
 
-  const onBuffer = () => setLoading(true);
+  const onPlayerBuffer = () => setLoading(true);
 
-  const onBufferEnd = () => {
+  const onPlayerBufferEnd = () => {
     if (loading)
       setLoading(false);
   };
@@ -87,6 +90,7 @@ export const VideoPlayer = ({ title, videos }) => {
   }
 
   const onVideoChange = ({ value }) => {
+    setPaused(false);
     setPlayed(0.0);
     setVideo(value);
     setLoading(true);
@@ -106,7 +110,7 @@ export const VideoPlayer = ({ title, videos }) => {
   };
 
   const onShareClick = async () => {
-    if (video !== null) {
+    if (video != null) {
       await navigator.clipboard.writeText(encodeURI(video.url));
       toast.current.show({
         severity: 'success',
@@ -135,6 +139,18 @@ export const VideoPlayer = ({ title, videos }) => {
     })
   };
 
+  const onPlayerClick = () => {
+    if (!disabled) {
+      setPaused(!paused)
+      if (isProdBrowser) window.umami.track('video_pause', {
+        action: !paused ? "pause" : "unpause",
+        video: video,
+        category: title,
+        tag: tag
+      })
+    }
+  }
+
   const onFavoriteClick = () => {
     const key = `${title}.${tag}.${video.file}`;
     const included = favoritePages.includes(key)
@@ -143,19 +159,14 @@ export const VideoPlayer = ({ title, videos }) => {
     } else {
       setFavoritePages([...favoritePages, key])
     }
-    if (isProdBrowser && video !== "") {
-      window.umami.track('favorite_click', {
-        action: included ? 'unfavorite' : 'favorite',
-        video: video,
-        category: title,
-        tag: tag
-      })
-    }
+    if (isProdBrowser && !disabled) window.umami.track('favorite_click', {
+      action: included ? 'unfavorite' : 'favorite',
+      video: video,
+      category: title,
+      tag: tag
+    })
   }
 
-  const disabled = video == null
-
-  const videoIsFavorited = useMemo(() => !disabled && favoritePages.includes(`${title}.${tag}.${video.file}`), [favoritePages, video])
 
   return (
     <div>
@@ -169,8 +180,9 @@ export const VideoPlayer = ({ title, videos }) => {
 
       <div className='row'>
         <div className='col col--8 col--offset-1'>
-          <Player video={video} volume={volume} player={player} loading={loading}
-                  onBuffer={onBuffer} onBufferEnd={onBufferEnd} onProgress={onProgress}/>
+          <Player video={video} volume={volume} player={player} loading={loading} paused={paused}
+                  onClick={onPlayerClick} onBuffer={onPlayerBuffer} onBufferEnd={onPlayerBufferEnd}
+                  onProgress={onProgress}/>
         </div>
         <div className='col col--2'>
           <Playlist value={video} values={taggedVideos} onChange={onVideoChange}/>
@@ -181,8 +193,8 @@ export const VideoPlayer = ({ title, videos }) => {
       <div className='row'>
         <div className='col col--8 col--offset-1'>
           <ProgressBar value={played}
-                       onChange={handleSeekChange} onProgress={onProgress}
-                       onMouseDown={onMouseDown} onMouseUp={onMouseUp}/>
+                       onChange={onProgressBarChange} onProgress={onProgress}
+                       onMouseDown={onProgressBarMouseDown} onMouseUp={onProgressBarMouseUp}/>
         </div>
       </div>
 
