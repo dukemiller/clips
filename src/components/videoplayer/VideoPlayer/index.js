@@ -167,7 +167,6 @@ export const VideoPlayer = ({ title, videos }) => {
     })
   }
 
-
   return (
     <div>
       <Toast ref={toast} position="bottom-right"/>

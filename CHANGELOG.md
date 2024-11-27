@@ -9,3 +9,4 @@
 11/18/2024 -- Add tag showing total video count to sidebar  
 11/19/2024 -- Improve mobile viewing  
 11/25/2024 -- Can now pause the video by clicking it while it's playing  
+11/27/2024 -- Update homepage  
