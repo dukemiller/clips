@@ -66,9 +66,7 @@ const config = {
         title: 'Clips',
         logo: {
           alt: 'Site Logo',
-          src: 'img/logo.svg',
-          width: 32,
-          height: 32
+          src: 'img/logo.svg'
         },
         items: [
           {

@@ -1,5 +1,5 @@
 import React from "react";
-import {PlaylistItem} from "..";
+import {PlaylistItem} from "../PlaylistItem";
 import {ListBox} from "primereact/listbox";
 import styles from './styles.module.css'
 

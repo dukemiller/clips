@@ -10,7 +10,7 @@ import MDXLi from '@theme/MDXComponents/Li';
 import MDXImg from '@theme/MDXComponents/Img';
 import Admonition from '@theme/Admonition';
 import Mermaid from '@theme/Mermaid';
-import {VideoPlayer} from "../../components/videoplayer";
+import {VideoPlayer} from "../../components/pages";
 const MDXComponents = {
   Head,
   details: MDXDetails, // For MD mode support, see https://github.com/facebook/docusaurus/issues/9092#issuecomment-1602902274

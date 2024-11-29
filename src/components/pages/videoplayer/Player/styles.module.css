@@ -29,4 +29,8 @@
         height: 25rem;
         margin-bottom: 10px;
     }
+
+    .spinner {
+        position: relative;
+    }
 }

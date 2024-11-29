@@ -2,14 +2,16 @@ import 'primeicons/primeicons.css';
 import "primereact/resources/themes/md-dark-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 
-import React, {useEffect, useMemo, useRef, useState} from 'react'
+import React, {useMemo, useRef, useState} from 'react'
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import {Toast} from 'primereact/toast';
 import {useFavoritePages} from '../../context/FavoritesContextProvider';
 
 import {FavoriteButton, ShareButton, SortByButton, TagSelectButtonGroup} from '../../buttons';
 import {ProgressBar, VolumeBar} from '../../bars'
-import {Playlist, Player, Title} from '..'
+import {Playlist} from './Playlist'
+import {Player} from './Player'
+import {Title} from './Title'
 
 let globalSortBy = "file"
 let globalVolume = 0.6
@@ -28,7 +30,7 @@ export const VideoPlayer = ({ title, videos }) => {
   const player = useRef(null);
   const isProdBrowser = useIsBrowser() && process.env.NODE_ENV === "production";
   const disabled = video == null
-  const videoIsFavorited = useMemo(() => !disabled && favoritePages.includes(`${title}.${tag}.${video.file}`), [favoritePages, video])
+  const favorited = useMemo(() => !disabled && favoritePages.includes(`${title}.${tag}.${video.file}`), [favoritePages, video])
 
   const tags = Object.entries(videos)
     .map(([key, value]) => ({
@@ -203,7 +205,7 @@ export const VideoPlayer = ({ title, videos }) => {
         </div>
         <div className='col col--2'>
           <ShareButton disabled={disabled} onClick={onShareClick}/>
-          <FavoriteButton value={videoIsFavorited} disabled={disabled} onClick={onFavoriteClick}/>
+          <FavoriteButton value={favorited} disabled={disabled} onClick={onFavoriteClick}/>
         </div>
       </div>
 

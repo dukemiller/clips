@@ -7,6 +7,6 @@ export const TagSelectButton = ({ name, count }) => {
     const tagName = <span style={{ color: coloring }}>{text}</span>;
 
     return (
-        <div>{tagName} <Badge value={count} severity={'contrast'}/></div>
+        <div key={tagName}>{tagName} <Badge value={count} severity={'contrast'}/></div>
     );
 }

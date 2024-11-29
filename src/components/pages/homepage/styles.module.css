@@ -2,11 +2,3 @@
     cursor: default;
     user-select: none;
 }
-
-.main span {
-    margin-right: 10px;
-}
-
-.main span div {
-    padding-right: 2px;
-}
