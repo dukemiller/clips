@@ -83,15 +83,9 @@ export const VideoPage = ({ title, videos }) => {
   };
 
   const onVolumeChange = ({ target: { value } }) => {
-    let decrease = parseFloat(value) < volume;
-    setVolume(parseFloat(value))
-    globalVolume = parseFloat(value);
-    if (isProdBrowser) window.umami.track('volume_click', {
-      action: decrease ? 'decrease' : 'increase',
-      video: video,
-      category: title,
-      tag: tag
-    })
+    let parsedValue = parseFloat(value)
+    setVolume(parsedValue)
+    globalVolume = parsedValue;
   }
 
   const onVideoChange = ({ value }) => {
