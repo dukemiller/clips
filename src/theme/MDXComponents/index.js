@@ -10,7 +10,8 @@ import MDXLi from '@theme/MDXComponents/Li';
 import MDXImg from '@theme/MDXComponents/Img';
 import Admonition from '@theme/Admonition';
 import Mermaid from '@theme/Mermaid';
-import {VideoPlayer} from "../../components/pages";
+import {VideoPage} from "../../pages/VideoPage";
+import {HomePage} from "../../pages/HomePage";
 const MDXComponents = {
   Head,
   details: MDXDetails, // For MD mode support, see https://github.com/facebook/docusaurus/issues/9092#issuecomment-1602902274
@@ -29,6 +30,7 @@ const MDXComponents = {
   h6: (props) => <MDXHeading as="h6" {...props} />,
   admonition: Admonition,
   mermaid: Mermaid,
-  VideoPlayer: VideoPlayer,
+  VideoPage: VideoPage,
+  HomePage: HomePage,
 };
 export default MDXComponents;

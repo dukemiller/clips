@@ -6,28 +6,7 @@ import Link from '@docusaurus/Link';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import IconExternalLink from '@theme/Icon/ExternalLink';
 import styles from './styles.module.css';
-import {Tag} from "primereact/tag";
-
-const HoverBadge = ({ value, isVisible }) => {
-    return (
-        <div style={{
-            marginLeft: 'auto',
-            float: 'right',
-            display: 'flex',
-            alignItems: 'center'
-        }}>
-            <Tag
-                value={value}
-                style={{
-                    display: "inline-block",
-                    color: '#9FA8DA',
-                    backgroundColor: '#121212',
-                    visibility: isVisible ? "visible" : "hidden"
-                }}
-            />
-        </div>
-    );
-};
+import {HoverBadge} from "../../../components/HoverBadge";
 
 export default function DocSidebarItemLink({
   item,

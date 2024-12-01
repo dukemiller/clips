@@ -5,18 +5,21 @@ import "primereact/resources/primereact.min.css";
 import React, {useMemo, useRef, useState} from 'react'
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import {Toast} from 'primereact/toast';
-import {useFavoritePages} from '../../context/FavoritesContextProvider';
-
-import {FavoriteButton, ShareButton, SortByButton, TagSelectButtonGroup} from '../../buttons';
-import {ProgressBar, VolumeBar} from '../../bars'
-import {Playlist} from './Playlist'
-import {Player} from './Player'
-import {Title} from './Title'
+import {useFavoritePages} from '../../contexts/FavoritesContextProvider';
+import {FavoriteButton} from '../../components/FavoriteButton';
+import {ShareButton} from '../../components/ShareButton';
+import {SortByButton} from '../../components/SortByButton';
+import {TagSelectButtonGroup} from '../../components/TagSelectButtonGroup';
+import {ProgressBar} from '../../components/ProgressBar'
+import {VolumeBar} from '../../components/VolumeBar'
+import {Playlist} from '../../components/Playlist'
+import {Player} from '../../components/Player'
+import {Title} from '../../components/Title'
 
 let globalSortBy = "file"
 let globalVolume = 0.6
 
-export const VideoPlayer = ({ title, videos }) => {
+export const VideoPage = ({ title, videos }) => {
   const toast = useRef(null);
   const { favoritePages, setFavoritePages } = useFavoritePages();
   const [video, setVideo] = useState(null);

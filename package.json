@@ -10,6 +10,7 @@
     "clips:sync-videos": "node ./.scripts/index.mjs sync-videos",
     "clips:update-webpage": "node ./.scripts/index.mjs update-webpage",
     "clips:view-remaining": "node ./.scripts/index.mjs view-remaining",
+    "update-docusaurus": "npm i @docusaurus/core@latest @docusaurus/preset-classic@latest @docusaurus/module-type-aliases@latest @docusaurus/types@latest",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -19,8 +20,8 @@
   },
   "dependencies": {
     "@dipakparmar/docusaurus-plugin-umami": "^2.1.7",
-    "@docusaurus/core": "3.6.2",
-    "@docusaurus/preset-classic": "3.6.2",
+    "@docusaurus/core": "^3.6.3",
+    "@docusaurus/preset-classic": "^3.6.3",
     "@mdx-js/react": "^3.1.0",
     "axios": "^1.2.0",
     "clsx": "^1.2.1",
@@ -33,8 +34,8 @@
     "react-player": "^2.16.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.0.0",
-    "@docusaurus/types": "3.0.0"
+    "@docusaurus/module-type-aliases": "^3.6.3",
+    "@docusaurus/types": "^3.6.3"
   },
   "browserslist": {
     "production": [

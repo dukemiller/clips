@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './styles.module.css';
-import ChangelogText from '../../../../../CHANGELOG.md'
+import ChangelogText from '../../../CHANGELOG.md'
 import {Divider} from "primereact/divider";
 
 export const Changelog = () => {

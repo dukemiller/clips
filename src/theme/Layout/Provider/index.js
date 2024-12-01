@@ -1,5 +1,5 @@
 import React from 'react';
-import {FavoritePagesProvider} from '../../../components/context/FavoritesContextProvider'
+import {FavoritePagesProvider} from '../../../contexts/FavoritesContextProvider'
 import {composeProviders} from '@docusaurus/theme-common';
 import {
   ColorModeProvider,

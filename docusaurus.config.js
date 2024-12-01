@@ -36,6 +36,9 @@ const config = {
           breadcrumbs: false,
           routeBasePath: "/",
         },
+        pages: {
+          exclude: ['**/*.{js,jsx,ts,tsx,md,mdx}']
+        },
         blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

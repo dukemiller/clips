@@ -1,4 +1,4 @@
-import {TagSelectButton} from "..";
+import {TagSelectButton} from "../TagSelectButton";
 import {SelectButton} from "primereact/selectbutton";
 import React from "react";
 import styles from './styles.module.css'
