@@ -11,3 +11,4 @@
 11/25/2024 -- Can now pause the video by clicking it while it's playing  
 11/27/2024 -- Update homepage  
 11/30/2024 -- Added/updated 57 files. (Content Warning, HELLDIVERS 2, Mario Wonder, SRB2, V Rising, sm64coop)  
+4/25/2025 -- Added/updated 37 files. (Cuphead, HELLDIVERS 2, Mario Wonder)  
