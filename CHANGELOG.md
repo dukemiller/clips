@@ -1,3 +1,4 @@
+05/01/2025 -- Added/updated 22 files. (Legend of Zelda)  
 05/01/2025 -- Flipped changelog order, padded dates  
 04/25/2025 -- Added/updated 37 files. (Cuphead, HELLDIVERS 2, Mario Wonder)  
 11/30/2024 -- Added/updated 57 files. (Content Warning, HELLDIVERS 2, Mario Wonder, SRB2, V Rising, sm64coop)  
