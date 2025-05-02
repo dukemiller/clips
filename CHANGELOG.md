@@ -1,16 +1,18 @@
-05/01/2025 -- Added/updated 22 files. (Legend of Zelda)  
-05/01/2025 -- Flipped changelog order, padded dates  
-04/25/2025 -- Added/updated 37 files. (Cuphead, HELLDIVERS 2, Mario Wonder)  
-11/30/2024 -- Added/updated 57 files. (Content Warning, HELLDIVERS 2, Mario Wonder, SRB2, V Rising, sm64coop)  
-11/27/2024 -- Update homepage  
-11/25/2024 -- Can now pause the video by clicking it while it's playing  
-11/19/2024 -- Improve mobile viewing  
-11/18/2024 -- Add tag showing total video count to sidebar  
-11/17/2024 -- Added sortBy options (filename, date created), badge number to indicate count of videos, improved page styling  
-11/14/2024 -- Added 51 new files. (sm64coop, SRB2, Lethal Company, Mario Wonder, SRB2 Kart)  
-09/07/2024 -- URI Encode shared urls  
-09/07/2024 -- Use the `clipstorage.rokkon.org` domain  
-09/07/2024 -- Changed to use cloudflare R2.  
-09/06/2024 -- Changed to use gdrive. (added: Raft, Mario 3, Mario Wonder, Lethal Company, Diablo 4, Palworld, V Rising, HELLDIVERS 2, Elden Ring)  
-12/30/2022 -- Added 11 new files. (SAGE 2021, Star Road)  
-12/29/2022 -- Added 51 new files.  
+05/02/2025 〰 Enrich changelog with clickable game urls, update styling  
+05/01/2025 〰 Added/updated 22 files. ([`Legend of Zelda`](RPG/Legend%20of%20Zelda))  
+05/01/2025 〰 Flipped changelog order, padded dates  
+04/25/2025 〰 Added/updated 37 files. ([`Cuphead`](Platformer/Cuphead), [`HELLDIVERS 2`](Shooter/HELLDIVERS%202), [`Mario Wonder`](Mario/Mario%20Wonder))  
+11/30/2024 〰 Added/updated 57 files. ([`Content Warning`](Party/Content%20Warning), [`HELLDIVERS 2`](Shooter/HELLDIVERS%202), [`Mario Wonder`](Mario/Mario%20Wonder), [`SRB2`](Sonic/SRB2), [`V Rising`](RPG/V%20Rising), [`sm64coop`](Mario/sm64coop))  
+11/27/2024 〰 Update homepage  
+11/25/2024 〰 Can now pause the video by clicking it while it's playing  
+11/19/2024 〰 Improve mobile viewing  
+11/18/2024 〰 Add tag showing total video count to sidebar  
+11/17/2024 〰 Added sortBy options (filename, date created), badge number to indicate count of videos, improved page styling  
+11/14/2024 〰 Added 51 new files. ([`sm64coop`](Mario/sm64coop), [`SRB2`](Sonic/SRB2), [`Lethal Company`](Party/Lethal%20Company), [`Mario Wonder`](Mario/Mario%20Wonder), [`SRB2 Kart`](Kart/SRB2%20Kart))  
+09/07/2024 〰 URI Encode shared urls  
+09/07/2024 〰 Use the `clipstorage.rokkon.org` domain  
+09/07/2024 〰 Changed to use cloudflare R2.  
+09/06/2024 〰 Added new files. ([`Raft`](Adventure/Raft), [`Mario 3`](Mario/Mario%203), [`Mario Wonder`](Mario/Mario%20Wonder), [`Lethal Company`](Party/Lethal%20Company), [`Diablo 4`](RPG/Diablo%204), [`Palworld`](RPG/Palworld), [`V Rising`](RPG/V%20Rising), [`HELLDIVERS 2`](Shooter/HELLDIVERS%202), [`Elden Ring`](Souls/Elden%20Ring))  
+09/06/2024 〰 Changed to use gdrive.  
+12/30/2022 〰 Added 11 new files. ([`SAGE 2021`](Sonic/SAGE%202021), [`Star Road`](Mario/Star%20Road))  
+12/29/2022 〰 Added 51 new files.  

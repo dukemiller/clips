@@ -5,15 +5,18 @@ import {Chip} from "primereact/chip";
 import styles from './styles.module.css'
 
 export const HomePage = () => {
+  const categories = <Chip key={'categories'} label="Categories" icon="pi pi-folder-open"/>
+  const playlist = <Chip key={'playlist'} label="Playlist" icon="pi pi-list"/>
+  const game = <Chip key={'Game'} label="Game" icon="pi pi-file"/>
+  const clip = <Chip key={'clip'} label="Clip" icon="pi pi-video"/>
+  const tags = <Chip key={'tag'} label="Tag" icon="pi pi-tags"/>
+
   return (
     <div className={'container'}>
       <Card>
         <div className={styles.main}>
-          <span>Select <Chip key={'category'} label="Category" icon="pi pi-folder-open"/> on the sidebar. </span>
-          <span>Pick <Chip key={'tag'} label="Tag" icon="pi pi-tags"/> below the video player. </span>
-          <span>Choose <Chip key={'video'} label="Video" icon="pi pi-video"/> from <Chip key={'playlist'}
-                                                                                         label="Playlist"
-                                                                                         icon="pi pi-list"/></span>
+          <span>From {categories} on the sidebar, click a {game} to load the player. </span>
+          <span>Change {tags} below the player to update the {playlist}, select a {clip} to begin playback. </span>
         </div>
       </Card>
       <Changelog/>
