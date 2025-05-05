@@ -1,3 +1,4 @@
+05/05/2025 〰 Added/updated 13 files. ([`Cuphead`](Platformer/Cuphead), [`HELLDIVERS 2`](Shooter/HELLDIVERS%202), [`Legend of Zelda`](RPG/Legend%20of%20Zelda))  
 05/03/2025 〰 Added/updated 5 files. ([`Legend of Zelda`](RPG/Legend%20of%20Zelda))  
 05/03/2025 〰 Added/updated 9 files. ([`Legend of Zelda`](RPG/Legend%20of%20Zelda))  
 05/02/2025 〰 Added/updated 18 files. ([`Legend of Zelda`](RPG/Legend%20of%20Zelda))  
