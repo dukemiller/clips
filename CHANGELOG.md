@@ -1,3 +1,4 @@
+05/24/2025 〰 Add autoplay toggle to cycle through all videos in a game, scroll list improvements  
 05/23/2025 〰 Add date field under clip title in playlist  
 05/12/2025 〰 Added/updated 4 files. ([`Cuphead`](Platformer/Cuphead), [`League of Legends`](MOBA/League%20of%20Legends))  
 05/05/2025 〰 Added/updated 13 files. ([`Cuphead`](Platformer/Cuphead), [`HELLDIVERS 2`](Shooter/HELLDIVERS%202), [`Legend of Zelda`](RPG/Legend%20of%20Zelda))  

@@ -10,9 +10,11 @@ export const Player = ({
                          onClick,
                          player,
                          volume,
+                         autoplay,
                          onBuffer,
                          onBufferEnd,
-                         onProgress
+                         onProgress,
+                         onEnded
                        }) => {
   return (
     <div className={styles.container} onClick={onClick}>
@@ -23,7 +25,8 @@ export const Player = ({
           ref={player}
           url={video && video.url}
           volume={volume}
-          loop={true}
+          loop={!autoplay}
+          onEnded={onEnded}
           width='100%'
           height='100%'
           playing={!paused}

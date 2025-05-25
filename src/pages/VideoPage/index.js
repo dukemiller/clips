@@ -15,6 +15,7 @@ import {VolumeBar} from '../../components/VolumeBar'
 import {Playlist} from '../../components/Playlist'
 import {Player} from '../../components/Player'
 import {Title} from '../../components/Title'
+import {AutoplayButton} from "../../components/AutoplayButton";
 
 let globalSortBy = "file"
 let globalVolume = 0.6
@@ -27,6 +28,7 @@ export const VideoPage = ({ title, videos }) => {
   const [sortBy, setSortBy] = useState(globalSortBy);
   const [loading, setLoading] = useState(false);
   const [seeking, setSeeking] = useState(false);
+  const [autoplay, setAutoplay] = useState(false);
   const [played, setPlayed] = useState(0.0);
   const [volume, setVolume] = useState(globalVolume);
   const [paused, setPaused] = useState(false);
@@ -75,6 +77,29 @@ export const VideoPage = ({ title, videos }) => {
       setPlayed(played);
   };
 
+  const onEnded = () => {
+    if (!autoplay) return;
+
+    const currentVideoIndex = taggedVideos.findIndex(obj => obj.id === video.id)
+    const nextVideoIndex = (currentVideoIndex + 1) % taggedVideos.length;
+    let nextVideo = taggedVideos[nextVideoIndex]
+
+    if (nextVideoIndex <= currentVideoIndex && tags.length > 1) {
+      const currentTagIndex = tags.findIndex(obj => obj.name === tag)
+      const nextTagIndex = (currentTagIndex + 1) % tags.length;
+      const nextTag = tags[nextTagIndex].name
+      setTag(nextTag)
+
+      nextVideo = videos[nextTag][0]
+    }
+
+    if (video.id !== nextVideo.id)
+      playVideo(nextVideo)
+    else {
+      setAutoplay(false)
+    }
+  }
+
   const onPlayerBuffer = () => setLoading(true);
 
   const onPlayerBufferEnd = () => {
@@ -89,10 +114,7 @@ export const VideoPage = ({ title, videos }) => {
   }
 
   const onVideoChange = ({ value }) => {
-    setPaused(false);
-    setPlayed(0.0);
-    setVideo(value);
-    setLoading(true);
+    playVideo(value)
     if (isProdBrowser && value != null && value !== "") window.umami.track('video_click', {
       video: value,
       category: title,
@@ -138,6 +160,13 @@ export const VideoPage = ({ title, videos }) => {
     })
   };
 
+  const onAutoplayClick = () => {
+    setAutoplay(!autoplay)
+    if (!video && taggedVideos.length > 0) {
+      playVideo(taggedVideos[0])
+    }
+  };
+
   const onPlayerClick = () => {
     if (!disabled) {
       setPaused(!paused)
@@ -166,6 +195,13 @@ export const VideoPage = ({ title, videos }) => {
     })
   }
 
+  const playVideo = (value) => {
+    setPaused(false);
+    setPlayed(0.0);
+    setVideo(value);
+    setLoading(true);
+  }
+
   return (
     <div>
       <Toast ref={toast} position="bottom-right"/>
@@ -178,13 +214,20 @@ export const VideoPage = ({ title, videos }) => {
 
       <div className='row'>
         <div className='col col--8 col--offset-1'>
-          <Player video={video} volume={volume} player={player} loading={loading} paused={paused}
+          <Player video={video} volume={volume} player={player} loading={loading} paused={paused} autoplay={autoplay}
                   onClick={onPlayerClick} onBuffer={onPlayerBuffer} onBufferEnd={onPlayerBufferEnd}
-                  onProgress={onProgress}/>
+                  onProgress={onProgress} onEnded={onEnded} />
         </div>
         <div className='col col--2'>
-          <Playlist value={video} values={taggedVideos} onChange={onVideoChange}/>
-          <SortByButton value={sortBy} onClick={onSortClick}/>
+          <div className='row row--no-gutters'>
+            <Playlist value={video} values={taggedVideos} onChange={onVideoChange}/>
+          </div>
+          <div className='row row--no-gutters'>
+            <div className='col'>
+              <AutoplayButton value={autoplay} onClick={onAutoplayClick}/>
+              <SortByButton value={sortBy} onClick={onSortClick}/>
+            </div>
+          </div>
         </div>
       </div>
 
