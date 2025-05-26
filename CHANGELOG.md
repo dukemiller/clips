@@ -1,3 +1,4 @@
+05/26/2025 〰 Added/updated 2 files. ([`Mario Wonder`](Mario/Mario%20Wonder))  
 05/24/2025 〰 Add autoplay toggle to cycle through all videos in a game, scroll list improvements  
 05/23/2025 〰 Add date field under clip title in playlist  
 05/12/2025 〰 Added/updated 4 files. ([`Cuphead`](Platformer/Cuphead), [`League of Legends`](MOBA/League%20of%20Legends))  
