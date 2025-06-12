@@ -1,3 +1,4 @@
+06/12/2025 〰 Renamed `Mario 3D Land` → `Mario 3D World`.  
 05/26/2025 〰 Added/updated 2 files. ([`Mario Wonder`](Mario/Mario%20Wonder))  
 05/24/2025 〰 Add autoplay toggle to cycle through all videos in a game, scroll list improvements  
 05/23/2025 〰 Add date field under clip title in playlist  
