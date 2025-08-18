@@ -1,3 +1,4 @@
+08/18/2025 〰 Added/updated 1 files. ([`Legend of Zelda`](RPG/Legend%20of%20Zelda))  
 06/12/2025 〰 Renamed `Mario 3D Land` → `Mario 3D World`.  
 05/26/2025 〰 Added/updated 2 files. ([`Mario Wonder`](Mario/Mario%20Wonder))  
 05/24/2025 〰 Add autoplay toggle to cycle through all videos in a game, scroll list improvements  
