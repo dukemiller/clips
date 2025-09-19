@@ -1,3 +1,4 @@
+09/18/2025 〰 Added/updated 35 files. ([`Fall Guys`](Party/Fall%20Guys), [`League of Legends`](MOBA/League%20of%20Legends), [`Mario Wonder`](Mario/Mario%20Wonder))  
 09/15/2025 〰 Updated changelog display    
 09/12/2025 〰 Added/updated 19 files. ([`Legend of Zelda`](RPG/Legend%20of%20Zelda), [`Mario Wonder`](Mario/Mario%20Wonder))  
 08/18/2025 〰 Added/updated 1 files. ([`Legend of Zelda`](RPG/Legend%20of%20Zelda))  
