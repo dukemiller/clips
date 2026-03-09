@@ -1,3 +1,4 @@
+03/09/2026 〰 Added/updated 1 files. ([`Dark Souls III`](Souls/Dark%20Souls%20III))  
 09/29/2025 〰 Added/updated 1 files. ([`Palworld`](RPG/Palworld))  
 09/18/2025 〰 Added/updated 35 files. ([`Fall Guys`](Party/Fall%20Guys), [`League of Legends`](MOBA/League%20of%20Legends), [`Mario Wonder`](Mario/Mario%20Wonder))  
 09/15/2025 〰 Updated changelog display    
